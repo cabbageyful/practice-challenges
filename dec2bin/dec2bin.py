@@ -19,6 +19,12 @@ For example::
     >>> dec2bin(15)
     '1111'
 
+    >>> dec2bin(100)
+    '1100100'
+
+    >>> dec2bin(-5)
+    '101'
+
 """
 # For example, using our alternate solution::
 
@@ -47,6 +53,13 @@ def dec2bin(num):
 
     if num == 0:
         return binary_num
+
+    # iterate only through range of numbers starting with 1 and including number
+    # if it's an odd number, add a 1 at the end of binary number string
+    # if it's even, and there is at least a zero in the string, but a 1
+        # where the last zero is and change everything after that to a zero
+    # if it's even and there are no zeros, we need to reset to a 1 followed by zeros and increase
+        # the length of the binary number string by 1
 
     for i in range(1, num + 1):
         if i % 2 != 0:
