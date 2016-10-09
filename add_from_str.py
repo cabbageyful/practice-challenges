@@ -54,8 +54,8 @@ def calculate_total(num_str):
     return total
 
 
-# def find_total(number_str):
-#     """Recursively find the total of a string of integers with either + or minus."""
-#     coun
+def find_total(number_str):
+    """Recursively find the total of a string of integers with either + or minus."""
+    coun
 
 
