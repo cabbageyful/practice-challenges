@@ -28,7 +28,7 @@ def calculate_total(num_str):
     assert isinstance(num_str, str), 'Input must be a string.'
 
     valid_operands = set(['+', '*'])
-    valid_nums = {str(x) for x in range(10)}
+    valid_nums = {str(number) for number in range(10)}
 
     valid_input = valid_operands | valid_nums
 
@@ -56,6 +56,12 @@ def calculate_total(num_str):
 
 def find_total(number_str):
     """Recursively find the total of a string of integers with either + or minus."""
-    coun
+
+    pass    
+
+if __name__ == '__main__':
+    from doctest import testmod
+    if testmod().failed == 0:
+        print 'What what! You did it!'
 
 
