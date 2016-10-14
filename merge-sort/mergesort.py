@@ -33,7 +33,7 @@ def merge_sort(lst):
 
 
 def make_merge(first_lst, second_lst):
-    """ """
+    """Combine two unordered list of lists into one sorted list."""
 
     final = []
 
@@ -48,6 +48,53 @@ def make_merge(first_lst, second_lst):
             final.append(second_lst.pop(0))
 
     return final
+
+
+def better_merge_sort(lst):
+    """Try to do it in all in one function without using pop.
+
+    >>> better_merge_sort([19, 6, 51, 4, 42, 8])
+    [4, 6, 8, 19, 42, 51]
+
+    >>> better_merge_sort([3, 5, 10, 2, 1, 9, 7, 6, 4, 8])
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    >>> better_merge_sort([])
+    []
+
+    >>> better_merge_sort([25, 26])
+    [25, 26]
+
+    """
+
+    if len(lst) > 1:
+        half = len(lst) / 2
+        half_uno = better_merge_sort(lst[:half])
+        half_dos = better_merge_sort(lst[half:])
+
+        uno_idx = dos_idx = nuevo = 0
+
+        while len(half_uno) > uno_idx and len(half_dos) > dos_idx:
+            if half_uno[uno_idx] > half_dos[dos_idx]:
+                lst[nuevo] = half_dos[dos_idx]
+                dos_idx += 1
+            else:
+                lst[nuevo] = half_uno[uno_idx]
+                uno_idx += 1
+            nuevo += 1
+
+        while len(half_uno) > uno_idx:
+            lst[nuevo] = half_uno[uno_idx]
+            uno_idx += 1
+            nuevo += 1
+
+        while len(half_dos) > dos_idx:
+            lst[nuevo] = half_dos[dos_idx]
+            dos_idx += 1
+            nuevo += 1
+
+    return lst
+
 
 
 if __name__ == '__main__':
