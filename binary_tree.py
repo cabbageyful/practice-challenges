@@ -10,9 +10,9 @@
     >>> zoo.add_node('cougar')
 
     >>> zoo.find_node('wolf')
-    False
+    None
     >>> zoo.find_node('tiger')
-    True
+    <Node: tiger>
     >>> zoo.root
     <Node: liger>
     >>> zoo.root.left
@@ -69,19 +69,20 @@ class BinaryTree(object):
 
     def find_node(self, info):
         if self.root != None:
-            self._find_node(info, self.root)
+            return self._find_node(info, self.root)
         # if root is None or recursive call comes up empty, returns None
         else:
-            return False
+            return None
 
 
     def _find_node(self, info, current_node):
         if info == current_node.data:
-            return True
+            return current_node
         elif info < current_node.data and current_node.left != None:
             self._find_node(info, current_node.left)
         elif info > current_node.data and current_node.right != None:
             self._find_node(info, current_node.right)
+
 
     def print_bin_tree(self):
         if self.root is not None:
