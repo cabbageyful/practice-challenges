@@ -1,6 +1,8 @@
 """Binary Tree with in-order traversal
 
     >>> zoo = BinaryTree()
+    >>> zoo.root
+    None
     >>> zoo.add_node('liger')
     >>> zoo.add_node('puma')
     >>> zoo.add_node('mountain lion')
@@ -9,17 +11,16 @@
     >>> zoo.add_node('cheetah')
     >>> zoo.add_node('cougar')
 
-    >>> zoo.find_node('wolf')
+    >>> zoo.find_node('maine coon')
     None
     >>> zoo.find_node('tiger')
     <Node: tiger>
-    >>> zoo.root
-    <Node: liger>
+    >>> zoo.root.data
+    'liger'
     >>> zoo.root.left
     <Node: cheetah>
     >>> zoo.root.right
     <Node: puma>
-    >>>
 """
 
 class Node(object):
@@ -50,6 +51,7 @@ class BinaryTree(object):
         else:
             self._add_node(new, self.root)
 
+
     def _add_node(self, data, root):
         if data < root.data:
             if root.left is None:
@@ -70,17 +72,17 @@ class BinaryTree(object):
     def find_node(self, info):
         if self.root != None:
             return self._find_node(info, self.root)
-        # if root is None or recursive call comes up empty, returns None
-        else:
-            return None
+
+        # if root is None or recursive call comes up empty, returns None    
+        return None
 
 
     def _find_node(self, info, current_node):
         if info == current_node.data:
-            return current_node
-        elif info < current_node.data and current_node.left != None:
+            print current_node
+        elif info < current_node.data and current_node.left is not None:
             self._find_node(info, current_node.left)
-        elif info > current_node.data and current_node.right != None:
+        elif info > current_node.data and current_node.right is not None:
             self._find_node(info, current_node.right)
 
 
